@@ -1,0 +1,85 @@
+body {
+  font-family: 'Roboto', sans-serif; /*копируем с google fonts*/
+  font-size: 14px;
+  color: #0A143A; /*цвет текста 0A143A*/
+}
+.header {
+  max-width: 1146px; /* максимальная ширина */
+  margin: auto; /*автоматическое выравнивание по середине*/
+  padding-top: 30px; /* отступ от верхнего края страницы*/
+}
+.navbar {
+display:flex; /* Делаем гибкий блок, раскладываем горизонтально */
+align-items: center; /*  выравниваем по вертикали по центру, ровно по вертикали*/
+justify-content: space-between; /* разброс элементов по краям*/
+margin-bottom: 24px; /*внешний отступ снизу для поисковой строки */
+}
+/* меню навигации в шапке */
+.navbar-menu {
+  margin-right: auto; /* автоматический отступ справа*/
+}
+.menu {
+  list-style: none; /*отключаем точки в списке */
+  margin: 0; /*обнуляем отступы*/
+  padding-left: 22px; /* внутренний отступ слева - 22 пикселя */
+  padding-right: 22px; /* внутренний отступ справа - 22 пикселя */
+  display: flex;
+}
+/* Для всех пунктов меню, кроме последнего */
+.menu-item:not(:last-child) {
+  margin-right: 14px; /* отступ справа 14 пикселей*/
+}
+.menu-link { 
+  text-decoration: none; /* отключаем подчёркивания ссылок*/
+   color: inherit; /* взять текста из body*/
+}
+.button {
+  text-decoration: none; /* отключаем подчёркивания ссылок*/
+  display: inline-block; /* нормально воспринимать отступ */
+  padding: 10px 15px; /* сверху и снизу 10 пикселей, по краям - 15*/
+  /*делаем со всех сторон отступы для кнопок, можно ещё сделать вот так */
+  /* padding-top: 10px; */
+  /* padding-right: 15px; */
+  /* padding-bottom: 10px; */
+  /* padding-left: 15px; */
+  cursor: pointer; /*При наведении курсора на ссылку, превращает указатель в палец */
+}
+
+.button-link {
+  color: inherit;
+}
+
+.button-primary {
+  background: #256eeb; /*фон */
+  border-radius: 5px; /*скругление углов */
+  color: white; /*цвет текста*/
+}
+.search-panel {
+height: 50px;
+background: #256EEB;
+border-radius: 5px; /*скругление */
+display: flex; /* заполнение */
+padding: 3px; /* отступ */
+}
+.search-input {
+flex-grow: 1; /* растяжение элемента на всю строку*/ 
+background: #FFFFFF;
+border-radius: 5px;
+border: none; /* отключаем серую обводку*/ 
+padding-left: 22px; /* отступаем */
+padding-right: 22px;
+}
+
+.search-button {
+  background: #256EEB;
+  border: none; /* отключаем серую обводку*/ 
+  color: #FFFFFF;
+  padding-left: 20px; /*оступ */
+  padding-right: 17px; /*17 пикселей потому что мы уже отступали в search panel */
+  display: flex; /* задаём гибкость, чтобы наша иконка поиска была центрально с текстом*/
+  align-items: center;
+}
+
+.search-button-text {
+  margin-left: 5px;
+}
