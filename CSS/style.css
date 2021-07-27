@@ -1,19 +1,28 @@
 body {
-  font-family: 'Roboto', sans-serif; /*копируем с google fonts*/
+  font-family: "Roboto", sans-serif; /*копируем с google fonts*/
   font-size: 14px;
-  color: #0A143A; /*цвет текста 0A143A*/
+  color: #0a143a; /*цвет текста 0A143A*/
 }
-.header {
+.container {
   max-width: 1146px; /* максимальная ширина */
   margin: auto; /*автоматическое выравнивание по середине*/
+}
+
+.header {
+  /* max-width: 1146px;  максимальная ширина */
+  /* margin: auto; автоматическое выравнивание по середине*/
+  /* перенесли эти пункты в .container чтобы объединить с контентом сайта */
   padding-top: 30px; /* отступ от верхнего края страницы*/
+  padding-bottom: 30px;
+  margin-bottom: 12px;
 }
 .navbar {
-display:flex; /* Делаем гибкий блок, раскладываем горизонтально */
-align-items: center; /*  выравниваем по вертикали по центру, ровно по вертикали*/
-justify-content: space-between; /* разброс элементов по краям*/
-margin-bottom: 24px; /*внешний отступ снизу для поисковой строки */
+  display: flex; /* Делаем гибкий блок, раскладываем горизонтально */
+  align-items: center; /*  выравниваем по вертикали по центру, ровно по вертикали*/
+  justify-content: space-between; /* разброс элементов по краям*/
+  margin-bottom: 24px; /*внешний отступ снизу для поисковой строки */
 }
+
 /* меню навигации в шапке */
 .navbar-menu {
   margin-right: auto; /* автоматический отступ справа*/
@@ -29,9 +38,9 @@ margin-bottom: 24px; /*внешний отступ снизу для поиск�
 .menu-item:not(:last-child) {
   margin-right: 14px; /* отступ справа 14 пикселей*/
 }
-.menu-link { 
+.menu-link {
   text-decoration: none; /* отключаем подчёркивания ссылок*/
-   color: inherit; /* взять текста из body*/
+  color: inherit; /* взять текста из body*/
 }
 .button {
   text-decoration: none; /* отключаем подчёркивания ссылок*/
@@ -55,32 +64,139 @@ margin-bottom: 24px; /*внешний отступ снизу для поиск�
   color: white; /*цвет текста*/
 }
 .search-panel {
-height: 50px;
-background: #256EEB;
-border-radius: 5px; /*скругление */
-display: flex; /* заполнение */
-padding: 3px; /* отступ */
+  height: 50px;
+  background: #256eeb;
+  border-radius: 5px; /*скругление */
+  display: flex; /* заполнение */
+  padding: 3px; /* отступ */
 }
 .search-input {
-flex-grow: 1; /* растяжение элемента на всю строку*/ 
-background: #FFFFFF;
-border-radius: 5px;
-border: none; /* отключаем серую обводку*/ 
-padding-left: 22px; /* отступаем */
-padding-right: 22px;
+  flex-grow: 1; /* растяжение элемента на всю строку*/
+  background: #ffffff;
+  border-radius: 5px;
+  border: none; /* отключаем серую обводку*/
+  padding-left: 22px; /* отступаем */
+  padding-right: 22px;
 }
 
 .search-button {
-  background: #256EEB;
-  border: none; /* отключаем серую обводку*/ 
-  color: #FFFFFF;
+  background: #256eeb;
+  border: none; /* отключаем серую обводку*/
+  color: #ffffff;
   padding-left: 20px; /*оступ */
   padding-right: 17px; /*17 пикселей потому что мы уже отступали в search panel */
   display: flex; /* задаём гибкость, чтобы наша иконка поиска была центрально с текстом*/
   align-items: center;
+  cursor: pointer;
 }
 
 .search-button-text {
   margin-left: 5px;
 }
- 
+.page-content {
+  display: grid; /*Делим контент на кусочки, создаем потому что у нас 12 колонок, колонки из figma*/
+  grid-template-columns: 9fr 3fr; /* делим на 2 колонки контента*/
+  grid-column-gap: 30px; /*делаем пространство между колонками*/
+}
+
+.card-image {
+  border-radius: 10px;
+  width: 264px;
+  height: 178px;
+  object-fit: cover; /*на случай если картинка не может иметь нужные нам размеры*/
+}
+.cards {
+  display: flex; /*Создаём гибкость для блока с карточками, чтобы они встали в ряд*/
+  flex-wrap: wrap; /* Если карточка не помещается, то она переходит на другую строку*/
+  /*justify-content: space-between; Чтобы наши карточки соблюдали между собой расстояние*/
+  /* отключили этот параметр чтобы 2 карточки не расходились по краям экрана */
+}
+.card {
+  margin-bottom: 20px; /*у каждой карточки есть отступ снизу*/
+}
+/* Делаем так, чтобы у последней карточки не было отступа в 20 пикселей */
+/* с этим сайт уже не так хорошо адаптируется */
+.card:not(:nth-child(3n)) {
+  margin-right: 20px;
+}
+
+.card-title {
+  font-size: 16px;
+  line-height: 19px;
+  color: #256eeb;
+  margin-top: 12px;
+  margin-bottom: 5px;
+  max-width: 230px;
+}
+.card-header {
+  /*чтобы кнопка лайка была в ряд с текстом и не вплотную к нему */
+  display: flex;
+  justify-content: space-between;
+  align-items: center; /*чтобы кнопка была по середине с текстом*/
+}
+
+.like {
+  background-color: #fff;
+  border: none;
+  cursor: pointer;
+  margin-left: 15px; /*отступ от текста до кнопки лайка*/
+}
+.card-link {
+  text-decoration: none;
+}
+.card-price {
+  font-size: 16px;
+  line-height: 19px;
+  color: #0a143a;
+  margin-bottom: 10px;
+  display: block; /*должен быть блочным чтобы для него сработали эти отступы*/
+}
+.card-text {
+  font-size: 14px;
+  line-height: 16px;
+  color: #c4c4c4;
+  margin-bottom: 4px;
+  margin-top: 0;
+}
+.sidebar .page-title {
+  font-size: 18px;
+  line-height: 21px;
+  color: #0a143a;
+}
+
+.service {
+  margin-bottom: 25px;
+}
+.service-title {
+  margin-top: 7px;
+  margin-bottom: 5px;
+  font-weight: bold;
+  font-size: 14px;
+  line-height: 16px;
+  color: #0a143a;
+}
+.service-text {
+  font-size: 14px;
+  line-height: 16px;
+  color: #0a143a;
+  max-width: 231px;
+}
+.footer-text {
+  display: inline-block;
+  font-size: 14px;
+  line-height: 16px;
+  color: #c4c4c4;
+  margin-bottom: 5px;
+}
+.footer-menu {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  margin-bottom: 14px;
+}
+.footer-link {
+  color: inherit;
+  text-decoration: none;
+  display: inline-block;
+  margin-bottom: 5px;
+}
