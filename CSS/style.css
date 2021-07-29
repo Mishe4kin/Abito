@@ -23,6 +23,12 @@ body {
   margin-bottom: 24px; /*внешний отступ снизу для поисковой строки */
 }
 
+.navbar-panel {
+  flex-grow: 1; /*Растянуть по ширине*/
+  display: flex; /*Сделать гибким*/
+  align-items: center; /*выровнять по середине*/
+}
+
 /* меню навигации в шапке */
 .navbar-menu {
   margin-right: auto; /* автоматический отступ справа*/
@@ -96,7 +102,7 @@ body {
 .page-content {
   display: grid; /*Делим контент на кусочки, создаем потому что у нас 12 колонок, колонки из figma*/
   grid-template-columns: 9fr 3fr; /* делим на 2 колонки контента*/
-  grid-column-gap: 30px; /*делаем пространство между колонками*/
+  grid-column-gap: 10px; /*делаем пространство между колонками*/
 }
 
 .card-image {
@@ -113,12 +119,14 @@ body {
 }
 .card {
   margin-bottom: 20px; /*у каждой карточки есть отступ снизу*/
+  margin-right: 20px;
 }
 /* Делаем так, чтобы у последней карточки не было отступа в 20 пикселей */
 /* с этим сайт уже не так хорошо адаптируется */
-.card:not(:nth-child(3n)) {
+/* Удалили это решение для того, чтобы было удобнее работать с адаптивностью */
+/* .card:not(:nth-child(3n)) {
   margin-right: 20px;
-}
+} */
 
 .card-title {
   font-size: 16px;
@@ -316,4 +324,114 @@ body {
   background-color: #14b4be;
   color: #fff;
   border-radius: 5px;
+}
+.menu-button {
+  background-color: #fff;
+  border: none;
+  cursor: pointer;
+  display: none; /*Отключаем кнопку везде*/
+}
+.close-menu {
+  display: none;
+}
+
+@media (max-width: 1200px) {
+  .container {
+    max-width: 960px; /* чтобы контент не прилипал к краям*/
+  }
+  .card {
+    width: 45%;
+  }
+  .card-image {
+    width: 100%;
+    height: 200px;
+  }
+}
+@media (max-width: 992px) {
+  .container {
+    max-width: 740px;
+  }
+  .card-image {
+    height: 150px;
+  }
+}
+@media (max-width: 768px) {
+  .container {
+    max-width: 560px;
+  }
+  .card {
+    width: 100%;
+  }
+  .page-content {
+    /* Меняем соотношение сайдбара к объявлениям */
+    grid-template-columns: 8fr 4fr;
+  }
+  .menu-button {
+    display: block;
+  }
+  .close-menu {
+    display: block;
+    position: absolute;
+    right: 30px;
+    top: 30px;
+    cursor: pointer;
+    background-color: #fff;
+    border: none;
+  }
+  .navbar-panel {
+    position: fixed;
+    right: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #fff;
+    z-index: 9;
+    flex-direction: column; /*Выстроить дочерние элементы в столбец*/
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.3s, opacity 0.3s;
+    transform: translateX(100%);
+    /* Обязательно убирать после translateX пробел перед скобкой, иначе он просто не будет работать */
+    /*уберём меню в сторону, чтобы его не было видно*/
+    opacity: 0;
+  }
+  .is-open {
+    transform: translateX(0%);
+    opacity: 1;
+  }
+  .navbar-menu {
+    margin-left: auto;
+    margin-bottom: 20px;
+  }
+  .menu {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  .menu-item:not(:last-child) {
+    /*обнуляем отступ справа для последнего элемента меню*/
+    margin-right: 0;
+    margin-bottom: 10px;
+  }
+  .button-group {
+    display: flex;
+    flex-direction: column;
+  }
+}
+@media (max-width: 576px) {
+  .container {
+    max-width: 90%;
+  }
+  .page-content {
+    grid-template-columns: 12fr;
+  }
+  .card-image {
+    height: 250px;
+  }
+  .card {
+    margin-right: 0;
+  }
+  .search-button-text {
+    display: none;
+  }
 }
